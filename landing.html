@@ -1,148 +1,290 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>資安意識演練 ｜ 老師說要好好學資安</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#0e2a26;
-    --paper:#f4f1e8;
-    --mint:#1f9e7a;
-    --mint-deep:#0f6b54;
-    --amber:#e8a13a;
-    --coral:#e2583e;
-    --line:rgba(15,107,84,.18);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:"Noto Sans TC",sans-serif;
-    color:var(--ink);
-    background:
-      radial-gradient(120% 90% at 50% -10%, #ffffff 0%, var(--paper) 55%, #e9e4d4 100%);
-    min-height:100vh;
-    display:flex;align-items:center;justify-content:center;
-    padding:32px 18px;
-    position:relative;overflow-x:hidden;
-  }
-  body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;
-    background-image:radial-gradient(var(--line) 1px,transparent 1px);
-    background-size:22px 22px;opacity:.5;mask-image:radial-gradient(80% 70% at 50% 30%,#000,transparent);
-  }
-  .card{
-    position:relative;width:100%;max-width:680px;
-    background:#fffdf7;
-    border:1.5px solid var(--line);
-    border-radius:26px;
-    box-shadow:0 30px 70px -30px rgba(15,42,38,.45), inset 0 1px 0 #fff;
-    padding:46px 40px 40px;
-    overflow:hidden;
-    animation:rise .7s cubic-bezier(.2,.8,.2,1) both;
-  }
-  @keyframes rise{from{opacity:0;transform:translateY(26px) scale(.985)}to{opacity:1;transform:none}}
-  .ribbon{
-    position:absolute;top:0;left:0;right:0;height:7px;
-    background:linear-gradient(90deg,var(--mint),var(--amber),var(--coral),var(--mint));
-    background-size:300% 100%;animation:slide 6s linear infinite;
-  }
-  @keyframes slide{to{background-position:300% 0}}
-  .pop{
-    font-family:"Noto Serif TC",serif;font-weight:900;
-    font-size:clamp(38px,9vw,68px);line-height:1.02;
-    letter-spacing:-.01em;color:var(--mint-deep);
-    display:flex;align-items:baseline;gap:.12em;
-  }
-  .pop .spark{display:inline-block;animation:pulse 1.6s ease-in-out infinite}
-  @keyframes pulse{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.18) rotate(-8deg)}}
-  .tag{
-    display:inline-block;margin-top:18px;
-    font-size:13px;font-weight:700;letter-spacing:.04em;
-    color:var(--mint-deep);background:rgba(31,158,122,.12);
-    border:1px solid rgba(31,158,122,.28);
-    padding:6px 14px;border-radius:999px;
-  }
-  .lede{
-    margin-top:22px;font-size:18px;line-height:1.85;font-weight:500;
-  }
-  .lede b{color:var(--coral)}
-  .safe{
-    margin-top:24px;display:flex;gap:14px;align-items:flex-start;
-    background:linear-gradient(180deg,#f0faf5,#e9f6ef);
-    border:1px solid rgba(31,158,122,.3);
-    border-radius:16px;padding:16px 18px;
-  }
-  .safe .ic{flex:0 0 auto;width:30px;height:30px;border-radius:50%;
-    background:var(--mint);color:#fff;display:grid;place-items:center;font-weight:800;font-size:17px}
-  .safe p{font-size:15px;line-height:1.7}
-  h2{
-    font-family:"Noto Serif TC",serif;font-size:22px;font-weight:700;
-    margin:34px 0 6px;display:flex;align-items:center;gap:10px;
-  }
-  h2::before{content:"";width:22px;height:3px;border-radius:2px;background:var(--amber)}
-  .flags{list-style:none;margin-top:14px;display:grid;gap:12px}
-  .flags li{
-    display:flex;gap:14px;align-items:flex-start;
-    border:1px solid var(--line);border-radius:14px;
-    padding:14px 16px;background:#fffdf7;
-    transition:transform .18s ease, box-shadow .18s ease;
-  }
-  .flags li:hover{transform:translateY(-2px);box-shadow:0 12px 24px -16px rgba(15,42,38,.4)}
-  .flags .n{flex:0 0 auto;width:26px;height:26px;border-radius:8px;
-    background:var(--coral);color:#fff;font-weight:800;font-size:14px;display:grid;place-items:center}
-  .flags .t{font-size:15px;line-height:1.65}
-  .flags .t strong{color:var(--mint-deep)}
-  .reward{
-    margin-top:30px;border-radius:16px;padding:20px 22px;
-    background:linear-gradient(135deg,var(--mint-deep),var(--mint));
-    color:#fdfdf6;
-  }
-  .reward h3{font-family:"Noto Serif TC",serif;font-size:19px;margin-bottom:8px}
-  .reward p{font-size:14.5px;line-height:1.8;opacity:.95}
-  .foot{margin-top:30px;padding-top:20px;border-top:1px dashed var(--line);
-    font-size:12.5px;color:#5a6b66;line-height:1.7}
-  .foot b{color:var(--mint-deep)}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>資安意識演練 — 您已通過測試！</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', 'PingFang TC', 'Noto Sans TC', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      color: #e2e8f0;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 1.5rem;
+      max-width: 780px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ── Banner ── */
+    .banner {
+      background: linear-gradient(90deg, #f59e0b, #ef4444);
+      padding: 2rem 2.5rem;
+      text-align: center;
+    }
+    .banner .emoji { font-size: 3.5rem; display: block; margin-bottom: 0.5rem; }
+    .banner h1 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      line-height: 1.3;
+    }
+    .banner .subtitle {
+      margin-top: 0.6rem;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* ── Body ── */
+    .body { padding: 2.5rem; }
+
+    /* Safe notice */
+    .safe-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .safe-notice .icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .safe-notice p { font-size: 0.95rem; line-height: 1.7; color: #a7f3d0; }
+    .safe-notice strong { color: #6ee7b7; }
+
+    /* Section title */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fbbf24;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(251, 191, 36, 0.25);
+    }
+
+    /* Flaw cards */
+    .flaw-grid {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .flaw-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 0.75rem;
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .flaw-card:hover { background: rgba(255,255,255,0.08); }
+    .flaw-number {
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .flaw-content h3 { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.3rem; }
+    .flaw-content p { font-size: 0.875rem; color: #94a3b8; line-height: 1.6; }
+    .flaw-content code {
+      background: rgba(239,68,68,0.15);
+      color: #fca5a5;
+      border-radius: 0.3rem;
+      padding: 0.1rem 0.4rem;
+      font-family: 'Cascadia Code', 'Fira Code', monospace;
+      font-size: 0.82rem;
+    }
+
+    /* Praise section */
+    .praise-box {
+      background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(168,85,247,0.15));
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .praise-box p { font-size: 0.95rem; line-height: 1.8; color: #c4b5fd; }
+    .praise-box strong { color: #a78bfa; }
+    .praise-box .highlight {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      color: #ddd6fe;
+      font-size: 1rem;
+    }
+
+    /* Tips */
+    .tips-list { list-style: none; display: grid; gap: 0.6rem; margin-bottom: 2.5rem; }
+    .tips-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+    .tips-list li::before {
+      content: '✓';
+      color: #34d399;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.25rem 2.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #475569;
+    }
+    .footer span { color: #64748b; }
+
+    @media (max-width: 540px) {
+      .body { padding: 1.5rem; }
+      .footer { padding: 1rem 1.5rem; }
+      .banner { padding: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-  <main class="card">
-    <div class="ribbon"></div>
-    <div class="pop"><span class="spark">💡</span>登愣！</div>
-    <span class="tag">資安意識演練 ｜ 主辦：老師說要好好學資安</span>
+<div class="card">
 
-    <p class="lede">
-      你剛剛點到的，是一封<b>演練用的釣魚信件</b>——不是真的中獎、也不是真的帳號異常。
-      這是一次內部資安意識練習，目的只有一個：讓大家以後遇到真的攻擊時能多停三秒。
-    </p>
+  <!-- ── Banner ── -->
+  <div class="banner">
+    <span class="emoji">🔔</span>
+    <h1>登愣！這是一次資安意識演練</h1>
+    <p class="subtitle">感謝您的參與，您的好奇心正是我們一起學習的起點</p>
+  </div>
 
-    <div class="safe">
-      <span class="ic">✓</span>
-      <p><strong>請完全放心：</strong>這個頁面沒有任何密碼或登入欄位，後端也不會記錄、儲存你的任何輸入或個人資料。你沒有損失任何東西，這只是一次練習。</p>
+  <div class="body">
+
+    <!-- ── Safe notice ── -->
+    <div class="safe-notice">
+      <div class="icon">🛡️</div>
+      <p>
+        <strong>請完全放心：</strong>
+        此頁面沒有任何登入欄位、表單或追蹤程式碼。
+        後端<strong>不會記錄、儲存或傳送</strong>您的任何個人資訊。
+        本次演練純屬內部教育用途，所有連結均指向此說明頁。
+      </p>
     </div>
 
-    <h2>這封信其實藏了這些破綻</h2>
-    <ul class="flags">
-      <li><span class="n">1</span><span class="t"><strong>寄件網域怪怪的：</strong>看起來像官方，其實是相似但不同的網域（例如把 <code>.edu.tw</code> 換成 <code>-edu.tw</code> 或加了多餘字串）。永遠把游標移到寄件人上看完整位址。</span></li>
-      <li><span class="n">2</span><span class="t"><strong>製造急迫與恐懼：</strong>「24 小時內未處理將停權」這類倒數壓力，是要你來不及思考就動作。真正的系統通知很少這樣逼人。</span></li>
-      <li><span class="n">3</span><span class="t"><strong>連結文字與實際網址不一致：</strong>顯示的是 A 網站，滑過去狀態列卻是 B 網站。點之前先用滑鼠懸停預覽真實目的地。</span></li>
-      <li><span class="n">4</span><span class="t"><strong>籠統稱呼：</strong>「親愛的使用者／同學您好」而非你的本名，常是大量群發的徵兆。</span></li>
-      <li><span class="n">5</span><span class="t"><strong>要求你「在連結裡」輸入帳密：</strong>合法服務不會用 email 連結叫你重新登入驗證。要登入請自己打開官方網站。</span></li>
+    <!-- ── Flaw analysis ── -->
+    <p class="section-title">🔍 模擬信件中的四大釣魚破綻</p>
+    <div class="flaw-grid">
+
+      <div class="flaw-card">
+        <div class="flaw-number">1</div>
+        <div class="flaw-content">
+          <h3>寄件者網域非官方</h3>
+          <p>
+            真正的電商客服信件必定來自品牌官方域名（如 <code>@ec-home.com.tw</code>）。
+            釣魚信常使用外觀相似的仿冒域名（如 <code>@ec-h0me-service.net</code> 或 <code>@ec-home-tw.info</code>）。
+            收信時請展開完整的「寄件者」欄位逐字核對，不要只看顯示名稱。
+          </p>
+        </div>
+      </div>
+
+      <div class="flaw-card">
+        <div class="flaw-number">2</div>
+        <div class="flaw-content">
+          <h3>製造金錢焦慮與扣款急迫感</h3>
+          <p>
+            信件以「24 小時內未確認將自動退貨並影響會員信用」等語句製造恐慌，
+            迫使收件人在未充分思考的情況下倉促點擊。
+            合法電商在處理帳務異常時，通常會提供多種管道與寬裕的處理時間。
+          </p>
+        </div>
+      </div>
+
+      <div class="flaw-card">
+        <div class="flaw-number">3</div>
+        <div class="flaw-content">
+          <h3>顯示的超連結與實際網址不符</h3>
+          <p>
+            信中按鈕文字寫著「點此查看扣款明細」，但將滑鼠懸停（hover）後可在瀏覽器底部看到
+            真正的目標網址，與官方域名完全不同。
+            <strong>永遠在點擊前先看網址列。</strong>
+          </p>
+        </div>
+      </div>
+
+      <div class="flaw-card">
+        <div class="flaw-number">4</div>
+        <div class="flaw-content">
+          <h3>模糊的稱呼（「親愛的顧客 / 會員」）</h3>
+          <p>
+            合法電商系統發送的交易通知幾乎必定包含您的真實姓名或帳號末四碼。
+            使用「親愛的顧客」等泛稱，正是釣魚信件為大量群發所採取的偷懶手法。
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Praise ── -->
+    <p class="section-title">🏆 您才是最強的防線</p>
+    <div class="praise-box">
+      <p>
+        資安防護從來不是在追究「誰點了連結」，而是讓每個人都能
+        <strong>在下一次更快發現異常、更有信心地通報</strong>。
+        點擊釣魚連結是全球每天數百萬人都可能遭遇的情境，沒有任何理由自責。
+      </p>
+      <div class="highlight">
+        🚨 最強的防線是：發現可疑信件時，第一時間通報資訊安全團隊。
+      </div>
+    </div>
+
+    <!-- ── Tips ── -->
+    <p class="section-title">💡 收到可疑信件時的三步驟</p>
+    <ul class="tips-list">
+      <li>先暫停，深呼吸：急迫感正是釣魚信的設計，放慢腳步就贏了一半。</li>
+      <li>展開寄件者完整地址，並用滑鼠懸停確認連結真實目標網址。</li>
+      <li>不確定就通報：聯絡資安人員比猜測更安全，通報者是英雄而非麻煩製造者。</li>
     </ul>
 
-    <div class="reward">
-      <h3>🏆 真正的高分動作是「通報」</h3>
-      <p>這次演練我們不會公開哪些人點到——點到很正常，這正是練習的價值。
-      我們真正想鼓勵的，是<strong>第一時間察覺異常、並主動在群組提醒大家小心</strong>的人。
-      下次收到可疑信，與其默默刪掉，不如喊一聲：「這封看起來怪怪的，大家別點。」這就是最強的防線。</p>
-    </div>
+  </div><!-- /.body -->
 
-    <p class="foot">
-      本演練屬<b>《老師說要好好學資安》</b>課堂教學情境，已取得指導老師授權，僅寄送給事前告知之組員與同學，全程不蒐集真實個資。
-      若對演練有疑問或想了解辨識技巧，歡迎在課堂或群組提出。— 持續提高警覺，我們下次見 👀
-    </p>
-  </main>
+  <div class="footer">
+    <span>本頁面由內部資安意識演練計畫自動產生 · 無任何個資收集 · 僅供教育用途</span>
+  </div>
+
+</div><!-- /.card -->
 </body>
 </html>
