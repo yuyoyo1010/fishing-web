@@ -1,298 +1,341 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>資安意識演練 ── 教學說明頁</title>
+  <title>資安意識演練教學頁面</title>
   <style>
+    /* ── Reset & Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0f172a 100%);
+      font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+      background: #f0f4f8;
+      color: #1a202c;
+      line-height: 1.75;
       min-height: 100vh;
-      color: #e2e8f0;
-      padding: 24px 16px 48px;
+      display: flex;
+      flex-direction: column;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    /* ── Hero banner ── */
-    .hero {
-      text-align: center;
-      background: linear-gradient(135deg, #dc2626, #b91c1c);
-      border-radius: 16px;
-      padding: 40px 24px 32px;
-      margin-bottom: 28px;
-      box-shadow: 0 8px 32px rgba(220,38,38,.45);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "🚨";
-      font-size: 3.5rem;
-      display: block;
-      margin-bottom: 12px;
-    }
-    .hero h1 {
-      font-size: clamp(1.6rem, 5vw, 2.4rem);
-      font-weight: 900;
-      letter-spacing: .04em;
-      line-height: 1.25;
+    /* ── Header Banner ── */
+    header {
+      background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
       color: #fff;
-      text-shadow: 0 2px 8px rgba(0,0,0,.4);
-    }
-    .hero p {
-      margin-top: 16px;
-      font-size: 1rem;
-      color: #fecaca;
-      line-height: 1.7;
+      text-align: center;
+      padding: 2.5rem 1.5rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
     }
 
-    /* ── Safety card ── */
-    .safety-card {
-      background: linear-gradient(135deg, #064e3b, #065f46);
-      border: 1px solid #10b981;
-      border-radius: 12px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 32px;
-      box-shadow: 0 4px 16px rgba(16,185,129,.2);
-    }
-    .safety-card .icon { font-size: 2rem; flex-shrink: 0; }
-    .safety-card p {
-      font-size: .95rem;
-      color: #a7f3d0;
-      line-height: 1.7;
-    }
-    .safety-card strong { color: #6ee7b7; }
-
-    /* ── Section heading ── */
-    .section-title {
-      font-size: 1.15rem;
+    header .drill-tag {
+      display: inline-block;
+      background: #fff;
+      color: #c53030;
+      font-size: 0.75rem;
       font-weight: 700;
-      color: #fbbf24;
-      letter-spacing: .05em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
     }
-    .section-title::after {
-      content: "";
+
+    header h1 {
+      font-size: clamp(1.6rem, 5vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+    }
+
+    /* ── Reassurance Notice ── */
+    .notice-bar {
+      background: #c6f6d5;
+      border-left: 6px solid #38a169;
+      color: #22543d;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 1rem 1.5rem;
+      text-align: center;
+    }
+
+    .notice-bar span.icon {
+      margin-right: 0.4rem;
+      font-size: 1.1rem;
+    }
+
+    /* ── Main Content ── */
+    main {
       flex: 1;
-      height: 2px;
-      background: linear-gradient(90deg, #fbbf24 0%, transparent 100%);
-      border-radius: 1px;
+      max-width: 860px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.25rem;
     }
 
-    /* ── Flaw cards ── */
-    .flaw-grid {
-      display: grid;
-      gap: 16px;
-      margin-bottom: 36px;
-    }
-    .flaw-card {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-left: 4px solid #f59e0b;
-      border-radius: 10px;
-      padding: 18px 20px;
-      transition: transform .15s, box-shadow .15s;
-    }
-    .flaw-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,.35);
-    }
-    .flaw-card .num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px; height: 28px;
-      background: #f59e0b;
-      color: #000;
-      font-weight: 800;
-      font-size: .85rem;
-      border-radius: 50%;
-      margin-right: 10px;
-      flex-shrink: 0;
-    }
-    .flaw-card .header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .flaw-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fbbf24;
-    }
-    .flaw-card p {
-      font-size: .9rem;
-      color: #94a3b8;
-      line-height: 1.65;
-      padding-left: 38px;
-    }
-    .flaw-card .example {
-      margin-top: 10px;
-      padding: 10px 12px;
-      background: #0f172a;
-      border-radius: 6px;
-      font-size: .82rem;
-      color: #64748b;
-      padding-left: 50px;
-    }
-    .flaw-card .example span { color: #f87171; font-weight: 600; }
-    .flaw-card .example .ok  { color: #34d399; }
-
-    /* ── Checklist ── */
-    .checklist {
-      background: #1e293b;
-      border: 1px solid #334155;
+    /* ── Section card ── */
+    .card {
+      background: #fff;
       border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 32px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      padding: 2rem 2.25rem;
+      margin-bottom: 2rem;
     }
-    .checklist ul { list-style: none; }
-    .checklist li {
-      font-size: .92rem;
-      color: #cbd5e1;
-      padding: 7px 0;
-      border-bottom: 1px solid #1e293b;
+
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #2d3748;
+      border-bottom: 3px solid #e53e3e;
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Flaw items ── */
+    .flaw {
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-left: 5px solid #e53e3e;
+      border-radius: 8px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .flaw:last-child { margin-bottom: 0; }
+
+    .flaw-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #c53030;
+      margin-bottom: 0.5rem;
       display: flex;
-      gap: 10px;
-      line-height: 1.55;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .checklist li:last-child { border-bottom: none; }
-    .checklist li::before { content: "✅"; flex-shrink: 0; }
+
+    .flaw-title .badge {
+      background: #e53e3e;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+
+    .flaw p {
+      color: #4a5568;
+      font-size: 0.95rem;
+    }
+
+    .flaw code {
+      background: #edf2f7;
+      color: #c53030;
+      font-family: "Cascadia Code", "Consolas", monospace;
+      font-size: 0.88rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      word-break: break-all;
+    }
+
+    .flaw .example-block {
+      background: #edf2f7;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      color: #2d3748;
+    }
+
+    .flaw .example-block strong { color: #c53030; }
+
+    /* ── Tips box ── */
+    .tips-box {
+      background: #ebf8ff;
+      border: 1px solid #bee3f8;
+      border-left: 5px solid #3182ce;
+      border-radius: 8px;
+      padding: 1.25rem 1.4rem;
+    }
+
+    .tips-box h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #2b6cb0;
+      margin-bottom: 0.75rem;
+    }
+
+    .tips-box ul {
+      padding-left: 1.25rem;
+      color: #2c5282;
+      font-size: 0.93rem;
+    }
+
+    .tips-box ul li { margin-bottom: 0.4rem; }
 
     /* ── Footer ── */
     footer {
+      background: #2d3748;
+      color: #a0aec0;
       text-align: center;
-      font-size: .8rem;
-      color: #475569;
-      margin-top: 8px;
+      padding: 1.5rem 1.25rem;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    footer strong { color: #e2e8f0; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .card { padding: 1.25rem 1rem; }
+      header { padding: 2rem 1rem 1.5rem; }
     }
   </style>
 </head>
 <body>
-<div class="container">
 
-  <!-- Hero -->
-  <div class="hero">
+  <!-- ═══ HEADER BANNER ═══ -->
+  <header>
+    <div class="drill-tag">資安意識演練</div>
     <h1>登愣！這是一次資安意識演練</h1>
-    <p>
-      您剛剛點擊了一封模擬釣魚郵件中的連結。<br />
-      <strong>請完全放心：此頁面沒有任何登入欄位，<br />
-      後端不會記錄或儲存您的任何輸入。</strong>
-    </p>
+  </header>
+
+  <!-- ═══ REASSURANCE NOTICE ═══ -->
+  <div class="notice-bar">
+    <span class="icon">&#10003;</span>
+    請完全放心：此頁面沒有任何登入欄位，後端不會記錄或儲存您的任何輸入
   </div>
 
-  <!-- Safety notice -->
-  <div class="safety-card">
-    <div class="icon">🛡️</div>
-    <p>
-      本次演練由資訊安全小組主辦，目的是協助大家辨識常見的電商詐騙郵件手法。<br />
-      <strong>您的個人資料完全不會被蒐集、記錄或分享。</strong>
-      此頁面純粹用於教育展示，不含任何追蹤程式或惡意腳本。
-    </p>
-  </div>
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <main>
 
-  <!-- Flaw analysis -->
-  <div class="section-title">🔍 電商釣魚信的四大破綻</div>
-  <div class="flaw-grid">
-
-    <div class="flaw-card">
-      <div class="header">
-        <span class="num">1</span>
-        <h3>寄件網域異常</h3>
-      </div>
+    <!-- Intro card -->
+    <div class="card">
+      <h2>您剛才點擊了一封模擬釣魚信件的連結</h2>
       <p>
-        寄件者的「顯示名稱」偽裝成官方品牌（如：PC-Home 客服中心），
-        但實際的郵件位址卻是個人 Gmail 或完全無關的網域。
-        只要展開寄件人欄位，真實面目就會現形。
+        這封信件是由學校資訊安全教育推廣小組所發送的<strong>模擬演練郵件</strong>，
+        目的是協助您辨識現實世界中真實存在的電商釣魚手法。
+        沒有任何個人資料被收集，也沒有任何帳號受到影響。
+        請繼續閱讀下方的破綻解析，學習如何保護自己。
       </p>
-      <div class="example">
-        顯示名稱：<span>EC-Home 客服中心</span><br />
-        實際寄件：<span>some.random.sender@gmail.com</span><br />
-        官方應為：<span class="ok">service@pchome.com.tw</span>
+    </div>
+
+    <!-- Four flaws card -->
+    <div class="card">
+      <h2>電商釣魚信件的四大破綻解析</h2>
+
+      <!-- Flaw 1 -->
+      <div class="flaw">
+        <div class="flaw-title">
+          <span class="badge">破綻 1</span>
+          寄件網域異常
+        </div>
+        <p>
+          信件的「寄件者顯示名稱」可以任意偽造，看起來像官方品牌（例如「PChome 24h 客服中心」），
+          但實際的寄件地址卻是個人 Gmail 帳號或其他非官方網域。
+        </p>
+        <div class="example-block">
+          <strong>顯示名稱（可偽造）：</strong> PChome 24h 客服中心<br />
+          <strong>實際寄件地址（請點「回覆」才看得到）：</strong> <code>someone_random@gmail.com</code><br />
+          <strong>正版官方網域應為：</strong> <code>@pchome.com.tw</code>
+        </div>
+        <p style="margin-top:0.6rem;">
+          <strong>自保方法：</strong>在手機或電腦郵件客戶端點開「寄件者」詳細資訊，
+          核對完整的 email 地址，而非只看顯示名稱。
+        </p>
+      </div>
+
+      <!-- Flaw 2 -->
+      <div class="flaw">
+        <div class="flaw-title">
+          <span class="badge">破綻 2</span>
+          製造急迫感與恐懼
+        </div>
+        <p>
+          釣魚信件慣用「限時威脅」迫使收件人在來不及思考的情況下點擊連結或輸入資料。
+          常見話術包括：
+        </p>
+        <div class="example-block">
+          「<strong>24 小時內未處理將自動退貨並留下信用瑕疵</strong>」<br />
+          「帳號將在今日午夜停用，請立即驗證」<br />
+          「系統偵測到異常付款，若未回應將凍結帳戶」
+        </div>
+        <p style="margin-top:0.6rem;">
+          <strong>自保方法：</strong>當信件讓您感到緊張或著急，請<strong>先停下來深呼吸</strong>。
+          真正的官方系統不會在毫無預警的情況下以一封信就「直接威脅信用受損」。
+          遇到可疑信件，請直接開啟瀏覽器，手動輸入官方網址登入查詢，而非點擊信中連結。
+        </p>
+      </div>
+
+      <!-- Flaw 3 -->
+      <div class="flaw">
+        <div class="flaw-title">
+          <span class="badge">破綻 3</span>
+          連結文字與實際網址不符
+        </div>
+        <p>
+          信件中可以讓連結「顯示」任何文字，但 <code>href</code> 實際跳轉到完全不同的網址。
+          這是釣魚攻擊最核心的技術手法之一。
+        </p>
+        <div class="example-block">
+          <strong>信中顯示文字：</strong>
+          <code>https://24h.pchome.com.tw/</code><br />
+          <strong>實際 href 指向（滑鼠懸停在連結上即可在瀏覽器底部看到）：</strong>
+          <code>https://yuyoyo1010.github.io/fishing-web/landing.html</code>
+        </div>
+        <p style="margin-top:0.6rem;">
+          <strong>自保方法：</strong>在桌機上，將滑鼠游標懸停於連結上，
+          觀察瀏覽器狀態列（左下角）顯示的真實網址。
+          在手機上，長按連結查看完整 URL 後再決定是否開啟。
+        </p>
+      </div>
+
+      <!-- Flaw 4 -->
+      <div class="flaw">
+        <div class="flaw-title">
+          <span class="badge">破綻 4</span>
+          籠統稱呼
+        </div>
+        <p>
+          真正的電商平台會在信件中以您<strong>註冊時的真實姓名</strong>稱呼您。
+          釣魚信件因為是大量發送，無從得知每位收件人姓名，因此只能使用模糊稱呼：
+        </p>
+        <div class="example-block">
+          「親愛的<strong>顧客/會員</strong>您好」&nbsp;&nbsp;&mdash;&nbsp;&nbsp;典型釣魚用語<br />
+          「尊敬的<strong>用戶</strong>」&nbsp;&nbsp;&mdash;&nbsp;&nbsp;同樣可疑<br /><br />
+          正版電商信件範例：「您好，<strong>王小明</strong>，您的訂單已出貨⋯⋯」
+        </div>
+        <p style="margin-top:0.6rem;">
+          <strong>自保方法：</strong>若官方服務寄來的信件無法叫出您的名字，
+          高度懷疑是批次釣魚郵件，應直接刪除並回報給 IT / 資安部門。
+        </p>
+      </div>
+
+    </div><!-- /card -->
+
+    <!-- Tips card -->
+    <div class="card">
+      <div class="tips-box">
+        <h3>收到可疑郵件時的標準處理步驟</h3>
+        <ul>
+          <li><strong>不要點擊</strong>信中任何連結或附件。</li>
+          <li>直接開啟新分頁，<strong>手動輸入</strong>官方網址查詢訂單狀態。</li>
+          <li>使用官方 App 或撥打官方客服電話（從官網查詢，而非信件中的號碼）確認。</li>
+          <li>將可疑郵件<strong>回報給學校 IT 部門或資安小組</strong>，勿自行刪除。</li>
+          <li>若已點擊並輸入帳號密碼，請<strong>立即更改密碼</strong>並開啟雙重驗證。</li>
+        </ul>
       </div>
     </div>
 
-    <div class="flaw-card">
-      <div class="header">
-        <span class="num">2</span>
-        <h3>製造急迫感與恐懼</h3>
-      </div>
-      <p>
-        「24 小時內未處理將自動退貨並留下信用瑕疵」——
-        這是典型的社交工程手法：讓您在慌亂中失去判斷力，急著點連結而不多加確認。
-        真正的電商平台不會以此方式威脅用戶。
-      </p>
-      <div class="example">
-        常見說法：<span>「立即處理，否則影響會員權益」</span><br />
-        真相：<span class="ok">合法平台不會用恐嚇語氣要求您急速點擊陌生連結</span>
-      </div>
-    </div>
+  </main>
 
-    <div class="flaw-card">
-      <div class="header">
-        <span class="num">3</span>
-        <h3>連結文字與實際網址不符</h3>
-      </div>
-      <p>
-        信件中按鈕或超連結所顯示的文字是電商官網（如 <code>https://24h.pchome.com.tw/</code>），
-        但您將滑鼠懸停（hover）在連結上時，瀏覽器左下角顯示的真實 href
-        卻指向完全不同的網域——正是本教學頁面。
-      </p>
-      <div class="example">
-        顯示文字：<span>https://24h.pchome.com.tw/</span><br />
-        真實連結：<span>https://yuyoyo1010.github.io/fishing-web/landing.html</span><br />
-        自保方式：<span class="ok">點擊前，永遠先 hover 確認真實網址</span>
-      </div>
-    </div>
-
-    <div class="flaw-card">
-      <div class="header">
-        <span class="num">4</span>
-        <h3>籠統稱呼，非真實姓名</h3>
-      </div>
-      <p>
-        信件開頭使用「親愛的顧客」、「親愛的會員」等泛稱，
-        而非您在平台上登錄的真實名字。
-        合法電商的交易通知通常會包含您的帳號姓名與訂單末四碼等可對照資訊。
-      </p>
-      <div class="example">
-        釣魚信：<span>「親愛的顧客，您好」</span><br />
-        真正通知：<span class="ok">「王小明 您好，訂單 #XXXX ...」</span>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Checklist -->
-  <div class="section-title">✅ 收到可疑郵件時的自保清單</div>
-  <div class="checklist">
-    <ul>
-      <li>確認寄件人「真實網域」，不只看顯示名稱</li>
-      <li>懸停連結，核對 href 是否與顯示文字一致</li>
-      <li>遇到時間壓力（24小時、立即！），先暫停、深呼吸再判斷</li>
-      <li>直接在瀏覽器輸入官方網址登入，勿點信件內連結</li>
-      <li>有疑慮時，撥打官方客服電話確認，勿回覆可疑郵件</li>
-      <li>將可疑郵件標記為垃圾郵件或回報給資安/IT 團隊</li>
-    </ul>
-  </div>
-
+  <!-- ═══ FOOTER ═══ -->
   <footer>
-    &copy; 2026 資安意識演練教材 ── 僅供教育用途，無任何個資蒐集
+    <p>
+      <strong>本演練由 資訊安全教育推廣小組 製作，僅供教學用途。</strong><br />
+      此頁面不含任何登入表單、追蹤像素、第三方腳本或 Cookie。<br />
+      如有疑問，請聯絡學校資安負責人員。
+    </p>
   </footer>
 
-</div>
 </body>
 </html>
